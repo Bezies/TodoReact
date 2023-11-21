@@ -39,10 +39,10 @@ export default function Todo() {
       className={`${
         darkmode.state
           ? "bg-slate-950 h-2/3 relative flex justify-center"
-          : "bg-slate-150 h-2/3 relative flex justify-center"
+          : "bg-slate-100 h-2/3 relative flex justify-center"
       }`}
     >
-      <div className="w-1/3 flex flex-col items-center justify-center rounded absolute -top-10">
+      <div className="w-4/5 md:w-1/3 flex flex-col items-center justify-center rounded absolute -top-10">
         {all &&
           todo.List.map((item) => <TodoDetail key={item.id} item={item} />)}
 
@@ -65,19 +65,27 @@ export default function Todo() {
         <div
           className={`${
             darkmode.state
-              ? "flex justify-between items-center w-full px-2 py-3 border-b-2 bg-slate-800"
-              : "flex justify-between items-center w-full px-2 py-3 border-b-2 bg-slate-50"
+              ? "flex justify-between items-center w-full px-2 py-3 border-b-[1px] border-slate-50/20 bg-slate-800"
+              : "flex justify-between items-center w-full px-2 py-3 border-b-[1px] border-slate-50/20 bg-slate-50"
           }`}
         >
           <button
-            className={`${darkmode.state ? "text-slate-50" : "text-slate-950"}`}
+            className={`${
+              darkmode.state
+                ? "text-gray-300 text-sm font-thin"
+                : "text-slate-950 text-sm font-thin"
+            }`}
           >
             <span>
               {todo.List.filter((el) => el.active === true).length} items left
             </span>
           </button>
           <div
-            className={`${darkmode.state ? "text-slate-50" : "text-slate-950"}`}
+            className={`${
+              darkmode.state
+                ? "text-slate-50 hidden md:flex"
+                : "text-slate-950 hidden md:flex"
+            }`}
           >
             <button
               onClick={() => handleAll()}
@@ -121,19 +129,58 @@ export default function Todo() {
                 )
               )
             }
-            className={`${darkmode.state ? "text-gray-300" : "text-slate-950"}`}
+            className={`${
+              darkmode.state
+                ? "text-gray-300 text-sm font-thin"
+                : "text-slate-950 text-sm font-thin"
+            }`}
           >
             Clear completed
           </button>
         </div>
 
-        <p
+        {/* MENU MOBILE  */}
+        <div
           className={`${
-            darkmode.state ? "mt-5 text-gray-300" : "mt-5 text-slate-950"
+            darkmode.state
+              ? "flex md:hidden font-semibold justify-around items-center w-full mt-5 rounded px-5 py-3 border-b-[1px] border-slate-50/20 bg-slate-800"
+              : "flex md:hidden font-semibold justify-around items-center w-full mt-5 rounded px-5 py-3 border-b-[1px] border-slate-50/20 bg-slate-50"
           }`}
         >
-          Drag and drop to re-order the list
-        </p>
+          <button
+            onClick={() => handleAll()}
+            style={{ color: all && "hsl(220, 98%, 61%)" }}
+            className={`${
+              darkmode.state
+                ? "focus:text-blue-500 text-gray-300"
+                : "text-slate-950"
+            }`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => handleActive()}
+            style={{ color: active && "hsl(220, 98%, 61%)" }}
+            className={`${
+              darkmode.state
+                ? "focus:text-blue-500 text-gray-300 mx-2"
+                : "text-slate-950 mx-2"
+            }`}
+          >
+            Active
+          </button>
+          <button
+            onClick={() => handleCompleted()}
+            style={{ color: completed && "hsl(220, 98%, 61%)" }}
+            className={`${
+              darkmode.state
+                ? "focus:text-blue-500 text-gray-300"
+                : "text-slate-950"
+            }`}
+          >
+            Completed
+          </button>
+        </div>
       </div>
     </div>
   );

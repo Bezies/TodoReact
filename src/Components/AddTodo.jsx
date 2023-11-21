@@ -33,8 +33,8 @@ export default function AddTodo() {
     <div
       className={`${
         darkmode.state
-          ? "w-1/3 justify-between flex mt-10 bg-slate-800 py-3 px-2 rounded"
-          : "w-1/3 justify-between flex mt-10 bg-slate-100 py-3 px-2 rounded"
+          ? "w-4/5 md:w-1/3 justify-between flex mt-10 bg-slate-800 py-3 px-2 rounded"
+          : "w-4/5 md:w-1/3 justify-between flex mt-10 bg-slate-100 py-3 px-2 rounded"
       }`}
     >
       <div className="flex items-center justify-center">
@@ -52,8 +52,8 @@ export default function AddTodo() {
           onChange={(e) => setNewTodo(e.target.value)}
           className={`${
             darkmode.state
-              ? "bg-slate-800 ml-4 text-gray-300 outline-none placeholder:text-gray-300"
-              : "bg-slate-100 ml-10 text-slate-950 outline-none placeholder:text-gray-300"
+              ? "bg-slate-800 ml-4 text-gray-300 outline-none placeholder:text-gray-30 placeholder:text-sm md:placeholder:text-base"
+              : "bg-slate-100 ml-10 text-slate-950 outline-none placeholder:text-gray-300 placeholder:text-sm md:placeholder:text-base"
           }`}
           placeholder="Create a new todo..."
           type="text"

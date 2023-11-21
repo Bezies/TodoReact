@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { completedTodo, deleteTodo } from "../features/todolist";
+import "./todoDetail.css";
 
 export default function TodoDetail({ item }) {
   const darkmode = useSelector((state) => state.darkmode);
@@ -9,10 +10,11 @@ export default function TodoDetail({ item }) {
 
   return (
     <div
+      id="todo"
       className={`${
         darkmode.state
-          ? "w-full justify-between flex bg-slate-800 py-3 px-2 border-b-2"
-          : "w-full justify-between flex bg-slate-50 py-3 px-2 border-b-2"
+          ? "w-full justify-between flex bg-slate-800 py-3 px-2 border-b-[1px] border-slate-50/20"
+          : "w-full justify-between flex bg-slate-50 py-3 px-2 border-b-[1px] border-slate-50/20"
       }`}
     >
       <div className="flex items-center justify-center">
@@ -42,14 +44,18 @@ export default function TodoDetail({ item }) {
           }}
           className={`${
             darkmode.state
-              ? "bg-slate-800 ml-4 text-gray-400 outline-none w-full"
-              : "bg-slate-50 ml-4 text-slate-950 outline-none w-full"
+              ? "bg-slate-800 ml-4 text-gray-400 text-sm md:text-base w-full"
+              : "bg-slate-50 ml-4 text-slate-950 text-sm md:text-base w-full"
           }`}
         >
           {item.content}
         </p>
       </div>
-      <button onClick={() => dispatch(deleteTodo(item.id))} className="mr-2">
+      <button
+        id="close"
+        onClick={() => dispatch(deleteTodo(item.id))}
+        className="mr-2"
+      >
         <span>
           <img src="images/icon-cross.svg" className="" alt="" />
         </span>

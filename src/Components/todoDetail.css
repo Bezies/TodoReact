@@ -1,0 +1,7 @@
+#close {
+  visibility: hidden;
+}
+
+#todo:hover #close {
+  visibility: visible;
+}
