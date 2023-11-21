@@ -2,6 +2,8 @@ import React from "react";
 import AddTodo from "./AddTodo";
 import { useDispatch, useSelector } from "react-redux";
 import { ChangeMode } from "../features/darkmode";
+import moon from "../assets/icon-moon.svg";
+import sun from "../assets/icon-sun.svg";
 
 export default function Header() {
   const darkmode = useSelector((state) => state.darkmode);
@@ -24,11 +26,7 @@ export default function Header() {
           <span>
             <img
               className="h-8 w-8"
-              src={`${
-                darkmode.state
-                  ? "./assets/icon-sun.svg"
-                  : "./assets/icon-moon.svg"
-              }`}
+              src={`${darkmode.state ? `${sun}` : `${moon}`}`}
               alt=""
             />
           </span>
