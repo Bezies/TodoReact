@@ -34,6 +34,11 @@ export default function Todo() {
     setCompleted(true);
   }
 
+  function handleClearCompleted() {
+    const CompletedArray = todo.List.filter((el) => el.completed === true);
+    CompletedArray.forEach((el) => dispatch(clearCompleteTodo(el.id)));
+  }
+
   return (
     <div
       className={`${
@@ -122,13 +127,7 @@ export default function Todo() {
             </button>
           </div>
           <button
-            onClick={() =>
-              dispatch(
-                clearCompleteTodo(
-                  todo.List.filter((el) => el.completed === true)
-                )
-              )
-            }
+            onClick={() => handleClearCompleted()}
             className={`${
               darkmode.state
                 ? "text-gray-300 text-sm font-thin"
